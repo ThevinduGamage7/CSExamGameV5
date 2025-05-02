@@ -1,0 +1,152 @@
+/* style.css */
+body {
+    margin: 0;
+    overflow: hidden;
+    background: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+  }
+  
+  #game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: url('background.png') repeat-y;
+    background-size: cover;
+    animation: scrollBackground 5s linear infinite;
+  }
+  
+  @keyframes scrollBackground {
+    from { background-position: 0 0; }
+    to { background-position: 0 100%; }
+  }
+  
+  #player {
+    position: absolute;
+    width: 150px; /* Increased width */
+    height: 150px; /* Increased height */
+    background: url('player.png') no-repeat center/cover;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: background 0.3s ease;
+  }
+  
+  .enemy {
+    position: absolute;
+    width: 100px; /* Increased width */
+    height: 100px; /* Increased height */
+    background: url('enemy.png') no-repeat center/cover;
+  }
+  
+  .bullet {
+    position: absolute;
+    width: 5px;
+    height: 20px;
+    background: blue;
+    border-radius: 2px;
+    box-shadow: 0 0 5px #0066ff;
+  }
+  
+  .player.level-2 .bullet,
+  .player.level-3 .bullet {
+    background: #00aaff;
+    box-shadow: 0 0 8px #00aaff;
+  }
+  
+  .enemy-bullet {
+    position: absolute;
+    width: 5px;
+    height: 20px;
+    background: red;
+    border-radius: 2px;
+    box-shadow: 0 0 5px #ff3300;
+  }
+  
+  .asteroid {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: url('https://e7.pngegg.com/pngimages/252/465/png-clipart-asteroids-meteoroids-meteorite-rock-asteroid-monochrome-solar-system-thumbnail.png') no-repeat center/cover;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #ffffff; /* Added to increase visibility */
+  }
+  
+  .life-pickup {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #00ff00; /* Changed to green */
+    border-radius: 50%;
+    box-shadow: 0 0 15px #00ff00; /* Increased visibility */
+    animation: pulse 1s infinite alternate;
+  }
+  
+  @keyframes pulse {
+    from { transform: scale(1); box-shadow: 0 0 15px #ff0000; }
+    to { transform: scale(1.2); box-shadow: 0 0 25px #ff0000; }
+  }
+  
+  #score, #lives, #level {
+    position: absolute;
+    top: 10px;
+    font-size: 20px;
+    text-shadow: 0 0 5px #000;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  #score {
+    left: 10px;
+  }
+  
+  #level {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  #lives {
+    right: 10px;
+    display: flex;
+    gap: 5px;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .life-icon {
+    width: 20px;
+    height: 20px;
+    background: url('player.png') no-repeat center/cover;
+    background-size: contain;
+  }
+  
+  .notification {
+    position: absolute;
+    color: #00ff00;
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow: 0 0 5px black;
+    animation: float-up 1s forwards;
+    pointer-events: none;
+    z-index: 100;
+  }
+  
+  @keyframes float-up {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-30px); }
+  }
+  
+  /* Player upgrade styles */
+  .player.level-2 {
+    width: 75px; 
+    height: 75px;
+    filter: brightness(1.2) saturate(1.2);
+  }
+  
+  .player.level-3 {
+    width: 80px;
+    height: 80px;
+    filter: brightness(1.4) saturate(1.4) drop-shadow(0 0 5px #00aaff);
+  }
